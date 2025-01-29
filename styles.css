@@ -551,10 +551,10 @@ body {
     .grid-list {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 1px;
+        gap: 15px;
     }
     .list-item {
-        width: 75%;
+        width: 85%;
         height: auto;
     }
     .additional-boxes {
@@ -839,11 +839,14 @@ body {
 }
 
 
-/* Container max 1200px ortalanıyor */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  /* ... diğer container CSS'leriniz ... */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px;
+    /* Kutu arkaplanı biraz saydam: */
+    background-color: rgba(20, 20, 20, 0.70);
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* TELEGRAM BUTONUNUN HİZALANMASI 
@@ -1184,4 +1187,3 @@ body {
 .social-links a:hover {
     color: #ffffff;
 }
-s
