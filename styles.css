@@ -61,6 +61,7 @@ body {
 .bolt1 { left: 20%; top: 30%; animation-delay: 1s; }
 .bolt2 { left: 60%; top: 50%; animation-delay: 3s; transform: scale(0.8);}
 .bolt3 { left: 80%; top: 20%; animation-delay: 5s; transform: scale(1.2) rotate(15deg); }
+
 @keyframes lightning-bolt {
   0%   { opacity: 0; }
   2%   { opacity: 1; }
@@ -80,12 +81,12 @@ body {
     animation: snowflakes-fall 5s linear infinite, snowflakes-shake 3s ease-in-out infinite;
 }
 @keyframes snowflakes-fall {
-    0% { transform: translateY(0);}
-    100% { transform: translateY(100vh);}
+    0% { transform: translateY(0); }
+    100% { transform: translateY(100vh); }
 }
 @keyframes snowflakes-shake {
-    0%,100% { transform: translateX(0);}
-    50% { transform: translateX(20px);}
+    0%,100% { transform: translateX(0); }
+    50% { transform: translateX(20px); }
 }
 
 /* Logo içindeki görsel */
@@ -105,11 +106,11 @@ body {
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Dış katman (.container-banner) - Arka planı ve radius korunuyor */
+/* Dış katman (.container-banner) */
 .container-banner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 7px; /* Dış kutunun etrafındaki boşluk */
+  padding: 7px;
   background-color: rgba(20, 20, 20, 0.70);
   border-radius: 12px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
@@ -123,7 +124,7 @@ body {
   }
 }
 
-/* İçerideki slider kapsayıcılarında, tüm margin/padding sıfırla */
+/* Slider container ayarları */
 .container-banner .slider-container,
 .container-banner .slider,
 .container-banner .slide {
@@ -131,34 +132,32 @@ body {
   padding: 0;
 }
 
-/* Resimleri blok düzende, kenarlara sıfırlayarak göster */
 .container-banner .slide img {
-  display: block;     /* Satır içi boşluk sorununu yok eder */
-  width: 100%;        /* Konteynerin tamamını kaplasın */
-  height: auto;       /* Oranı koruyarak yükseklik ayarlasın */
+  display: block;
+  width: 100%;
+  height: auto;
   margin: 0;
   padding: 0;
 }
 
 
 /* ---------------------------------------------- */
-/* YENİ: LOGO + SKYPE BAR */
+/* LOGO + SKYPE BAR */
 /* ---------------------------------------------- */
-
 .logo-bar {
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px;
-  display: flex; 
-  align-items: center; 
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
-/* Skype Butonunun ana stili */
+/* Skype Butonu */
 .skype-btn {
-  display: inline-flex;        
-  align-items: center;         
-  gap: 6px;                    
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: #ffbc00;
   color: #fff;
   padding: 8px 15px;
@@ -173,21 +172,17 @@ body {
   color: #0d0d217;
   transform: scale(1.05);
 }
-
-/* İkon boyutu */
 .skype-icon {
   width: 20px;
-  height: 20px;  
+  height: 20px;
   object-fit: cover;
   display: block;
 }
 
 
 /* ---------------------------------------------- */
-/* 2) BANNER & SLIDER */
+/* BANNER & SLIDER */
 /* ---------------------------------------------- */
-
-/* banner-section (varsayılan) */
 .banner-section {
   position: relative;
   background: url('img/banner/1.png') no-repeat center center;
@@ -219,30 +214,29 @@ body {
   }
 }
 
-/* Slider (video-banner-section yerine kullanılıyor) */
+/* Slider ayarları */
 .video-banner-section {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 10px 1px; 
+  padding: 10px 1px;
   box-sizing: border-box;
 }
-
 .slider-container {
   max-width: 1200px;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
 }
-
 .slider {
   display: flex;
-  /* 6 slayt, her biri 10sn görünür + 2sn fade-out = 12sn. 12sn x 6 = 72s */
+  /* 6 slayt × (10sn görünür + 2sn fade-out) = 72s */
   animation: autoplay-slide 72s infinite;
   animation-timing-function: ease-in-out;
 }
 
+/* Slider keyframes */
 @keyframes autoplay-slide {
-  /* SLIDE 1: 0–13.8889% (10sn), 13.8889–16.6667% (2sn) fade-out */
+  /* SLIDE 1 */
   0%, 13.8889% {
     transform: translateX(0);
     opacity: 1;
@@ -251,8 +245,7 @@ body {
     transform: translateX(0);
     opacity: 0;
   }
-
-  /* SLIDE 2: 16.6667–30.5556% (10sn), 30.5556–33.3333% (2sn) fade-out */
+  /* SLIDE 2 */
   16.6667%, 30.5556% {
     transform: translateX(-100%);
     opacity: 1;
@@ -261,8 +254,7 @@ body {
     transform: translateX(-100%);
     opacity: 0;
   }
-
-  /* SLIDE 3: 33.3333–47.2222% (10sn), 47.2222–50% (2sn) fade-out */
+  /* SLIDE 3 */
   33.3333%, 47.2222% {
     transform: translateX(-200%);
     opacity: 1;
@@ -271,8 +263,7 @@ body {
     transform: translateX(-200%);
     opacity: 0;
   }
-
-  /* SLIDE 4: 50–63.8889% (10sn), 63.8889–66.6667% (2sn) fade-out */
+  /* SLIDE 4 */
   50%, 63.8889% {
     transform: translateX(-300%);
     opacity: 1;
@@ -281,8 +272,7 @@ body {
     transform: translateX(-300%);
     opacity: 0;
   }
-
-  /* SLIDE 5: 66.6667–80.5556% (10sn), 80.5556–83.3333% (2sn) fade-out */
+  /* SLIDE 5 */
   66.6667%, 80.5556% {
     transform: translateX(-400%);
     opacity: 1;
@@ -291,8 +281,7 @@ body {
     transform: translateX(-400%);
     opacity: 0;
   }
-
-  /* SLIDE 6: 83.3333–97.2222% (10sn), 97.2222–100% (2sn) fade-out */
+  /* SLIDE 6 */
   83.3333%, 97.2222% {
     transform: translateX(-500%);
     opacity: 1;
@@ -331,49 +320,38 @@ body {
   animation-timing-function: ease-in-out;
 }
 
+/* Overlay keyframes (slider ile senkronize) */
 @keyframes overlay-animation {
-  /* Her slaytın fade-out olduğu aralıkla senkron */
-  /* Slide 1 fade-out */
   0%, 13.8889% {
     opacity: 0;
   }
   13.8889%, 16.6667% {
     opacity: 0.5;
   }
-
-  /* Slide 2 fade-out */
   16.6667%, 30.5556% {
     opacity: 0;
   }
   30.5556%, 33.3333% {
     opacity: 0.5;
   }
-
-  /* Slide 3 fade-out */
   33.3333%, 47.2222% {
     opacity: 0;
   }
   47.2222%, 50% {
     opacity: 0.5;
   }
-
-  /* Slide 4 fade-out */
   50%, 63.8889% {
     opacity: 0;
   }
   63.8889%, 66.6667% {
     opacity: 0.5;
   }
-
-  /* Slide 5 fade-out */
   66.6667%, 80.5556% {
     opacity: 0;
   }
   80.5556%, 83.3333% {
     opacity: 0.5;
   }
-
-  /* Slide 6 fade-out */
   83.3333%, 97.2222% {
     opacity: 0;
   }
@@ -384,10 +362,10 @@ body {
 
 
 /* ---------------------------------------------- */
-/* 3) KUTULAR (list-item, small-box) conic gradient */
+/* 3) KUTULAR (list-item, small-box) Conic Gradient */
 /* ---------------------------------------------- */
 
-/* ========== Conic Gradient Tanımı ========== */
+/* Conic gradient tanımı (tek sefer) */
 @property --gradient-angle {
   syntax: "<angle>";
   initial-value: 0turn;
@@ -401,174 +379,189 @@ body {
 
 .list-item,
 .small-box {
-    animation: 2s gradient-angle infinite linear;
-    border: 2px solid transparent;
-    background-image:
-      linear-gradient(#584827, #2d230f),
-      conic-gradient(
-        from var(--gradient-angle),
-        #584827 0%,
-        #c7a03c 37%,
-        #f9de90 40%,
-        #c7a03c 43%,
-        #584827 50%,
-        #584827 60%,
-        #c7a03c 77%,
-        #f9de90 80%,
-        #c7a03c 83%,
-        #584827 90%
-      );
-    background-clip: padding-box, border-box;
-    background-origin: padding-box, border-box;
+  animation: 2s gradient-angle infinite linear;
+  border: 2px solid transparent;
+  background-image:
+    linear-gradient(#584827, #2d230f),
+    conic-gradient(
+      from var(--gradient-angle),
+      #584827 0%,
+      #c7a03c 37%,
+      #f9de90 40%,
+      #c7a03c 43%,
+      #584827 50%,
+      #584827 60%,
+      #c7a03c 77%,
+      #f9de90 80%,
+      #c7a03c 83%,
+      #584827 90%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
 }
 
+/* list-item (büyük kutu) */
 .list-item {
-    border-radius: 12px;
-    width: 200px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 300px;
+  border-radius: 12px;
+  width: 200px; /* Masaüstünde 200px */
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 300px;
 }
 .list-item:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
+/* small-box (küçük kutu) */
 .small-box {
-    border-radius: 12px;
-    width: 150px;
-    height: 110px;
-    padding: 10px;
-    text-align: center;
-    font-size: 0.9rem;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  border-radius: 12px;
+  width: 150px;
+  height: 110px;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
 }
 .small-box:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 .list-item__logo img {
-    max-width: 150px;
-    max-height: 150px;
-    margin: 0 auto 10px;
-    object-fit: contain;
-    display: block;
+  max-width: 150px;
+  max-height: 150px;
+  margin: 0 auto 10px;
+  object-fit: contain;
+  display: block;
 }
 .list-item__info h3 {
-    font-size: 1.5rem;
-    color: #ffbc00;
-    margin-bottom: 10px;
+  font-size: 1.5rem;
+  color: #ffbc00;
+  margin-bottom: 10px;
 }
 .list-item__info p {
-    font-size: 0.9rem;
-    color: #ccc;
-    margin: 1.5px 0;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin: 1.5px 0;
 }
-
 
 /* ---------------------------------------------- */
 /* 4) BUTON, GRID VS. */
 /* ---------------------------------------------- */
-
 .list-item__btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #ffbc00;
-    color: #0d0d27;
-    padding: 5px 15px;
-    border-radius: 15px;
-    font-weight: bold;
-    font-size: 0.8rem;
-    text-decoration: none;
-    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffbc00;
+  color: #0d0d27;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 .list-item__btn:hover {
-    background: #ffffff;
-    color: #0d0d27;
-    transform: scale(1.05);
+  background: #ffffff;
+  color: #0d0d27;
+  transform: scale(1.05);
 }
 
 .additional-box-section {
-    padding: 20px 0;
-    text-align: center;
+  padding: 20px 0;
+  text-align: center;
 }
 .additional-boxes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .sponsor-section {
-    padding: 10px 0;
-    text-align: center;
+  padding: 10px 0;
+  text-align: center;
 }
 .section-title {
-    font-size: 2rem;
-    margin-bottom: 30px;
+  font-size: 2rem;
+  margin-bottom: 30px;
 }
 .section-title span {
-    color: #ffbc00;
+  color: #ffbc00;
 }
 
 .grid-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 .small-space {
-    line-height: 1;
-    margin-bottom: 2px;
+  line-height: 1;
+  margin-bottom: 2px;
 }
 
-/* Mobil uyum */
+/* Mobil uyum (768px altı) */
 @media (max-width: 768px) {
-    .grid-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
-    .list-item {
-        width: 85%;
-        height: auto;
-    }
-    .additional-boxes {
-        display: flex;
-        justify-content: center;
-        align-items: stretch;
-        gap: 10px;
-    }
+  .grid-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .list-item {
+    width: 85%; /* Mobilde genişlik %85 */
+    height: auto; /* Yüksekliği otomatik */
+  }
+  .additional-boxes {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 10px;
+  }
 }
 
 
 /* ---------------------------------------------- */
-/* 5) FİXED KUTULAR (.floating-box)               */
+/* Sabit Kutu (.floating-box) */
 /* ---------------------------------------------- */
 
-/* Conic gradient dönüşümü (Tekrar) - zaten yukarıda tanımlandı:
-   @property --gradient-angle  & @keyframes gradient-angle */
+/* Tek sefer tanımlanan conic gradient property  */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0turn;
+  inherits: false;
+}
+@keyframes gradient-angle {
+  to {
+    --gradient-angle: 1turn;
+  }
+}
 
-/* Temel kutu stili */
+/* GENEL KUTU STİLİ */
 .floating-box {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999;
+
+  /* Kutu boyutu sabit örnek: 200×600 */
   width: 200px;
   height: 600px;
-  overflow: hidden;     /* scrollbar kapatmak isterseniz hidden, yoksa auto */
+
+  /* İçerik sığmıyorsa kaydırma */
+  overflow: hidden; 
+  /* eğer içerik çok olursa: overflow-y: auto; */
+
   border-radius: 12px;
   border: 2px solid transparent;
-  background-color: rgba(0, 0, 0, 0.7); /* Örnek saydam arka plan */
+  background-color: rgba(0, 0, 0, 0.7);
 
-  /* Conic gradient animasyonu (opsiyonel) */
+  /* Conic gradient (opsiyonel) */
   animation: 2s gradient-angle infinite linear;
   background-image:
     linear-gradient(#584827, #2d230f),
@@ -589,7 +582,7 @@ body {
   background-origin: padding-box, border-box;
 }
 
-/* Sol ve sağ konum */
+/* SOL VE SAĞ KONUM (PC) */
 .floating-box-left {
   left: calc((100vw - 1200px) / 2 - 350px);
 }
@@ -597,7 +590,14 @@ body {
   right: calc((100vw - 1200px) / 2 - 350px);
 }
 
-/* İçerik kapsayıcı */
+/* TABLET & MOBİLDE GİZLE (<=1200px) */
+@media (max-width: 1200px) {
+  .floating-box {
+    display: none !important;
+  }
+}
+
+/* İçerik hizalama */
 .floating-box-content {
   display: flex;
   flex-direction: column;
@@ -607,7 +607,7 @@ body {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: 15px; 
+  padding: 15px;
 }
 .floating-box-img {
   width: 100%;
@@ -646,32 +646,24 @@ body {
   transform: scale(1.05);
 }
 
-/* Mobilde (<= 1200px) gizlemek (taşma sorununu engellemek için) */
-@media (max-width: 1200px) {
-  .floating-box {
-    display: none !important;
-  }
-}
-
 
 /* ---------------------------------------------- */
 /* TELEGRAM BUTONU */
 /* ---------------------------------------------- */
 
-/* Container max 1200px ortalanıyor, buton sağ kenara sabitlenecek */
 .telegram-float {
   position: fixed;
   bottom: 30px;
   z-index: 9999;
-  right: calc((100vw - 1200px) / 2); /* Container sağ kenarına denk gelir */
+  right: calc((100vw - 1200px) / 2); 
 }
 @media (max-width: 1200px) {
   .telegram-float {
-    right: 10px; /* mobilde sağdan 10px boşluk */
+    right: 10px; 
   }
 }
 
-/* Buton görünümü */
+/* Telegram Butonu Görünümü */
 .telegram-float .btn {
   display: inline-block;
   width: 60px;
@@ -725,7 +717,7 @@ body {
   }
 }
 
-/* Tooltip (baloncuk) */
+/* Telegram Tooltip */
 .telegram-tooltip {
   position: absolute;
   top: 50%;
@@ -758,7 +750,7 @@ body {
 
 
 /* ---------------------------------------------- */
-/* AÇILIŞTA GÖRÜNEN POPUP (SPONSOR) */
+/*  AÇILIŞTA GÖRÜNEN POPUP (.popup-sponsor)       */
 /* ---------------------------------------------- */
 
 .popup-sponsor {
@@ -777,7 +769,6 @@ body {
   color: #fff;
   display: none; /* Başlangıçta gizli */
 }
-
 @media (max-width: 768px) {
   .popup-sponsor {
     width: 85%;
@@ -785,24 +776,20 @@ body {
     padding: 15px;
   }
 }
-
-/* Popup görünür hale geldiğinde */
 .popup-sponsor.visible {
   display: block;
 }
-
-/* Arka plan (GIF) pseudo-element ile */
 .popup-sponsor::before {
   content: "";
   position: absolute;
   inset: 0;
   background: url("img/popup/1.gif") center center / cover no-repeat;
-  opacity: 1;              
+  opacity: 1;
   border-radius: 12px;
-  z-index: -1; 
+  z-index: -1;
 }
 
-/* X Kapat butonu */
+/* X (kapat) butonu */
 .close-btn {
   position: absolute;
   top: -15px;
@@ -822,9 +809,10 @@ body {
 }
 .close-btn:hover {
   background: #ffbc00;
-  color: #000; 
+  color: #000;
 }
 
+/* Pop-up sponsor içindeki logo, başlık, metin */
 .popup-sponsor .popup-logo {
   max-width: 150px;
   height: auto;
@@ -850,7 +838,13 @@ body {
   line-height: 1.4em;
 }
 
-/* Ek Tasarım */
+/* Alternatif daha büyük metin stili */
+.popup-sponsor h3 {
+  font-size: 1.8rem; 
+  font-weight: 700; 
+  color: #ffbc00; 
+  margin-bottom: 10px;
+}
 @media (max-width: 768px) {
   .popup-sponsor h3 {
     font-size: 1.3rem;
@@ -868,19 +862,12 @@ body {
   line-height: 1.8em;
   margin-bottom: 15px;
 }
-.popup-sponsor .popup-logo {
-  max-width: 200px;
-  margin-bottom: 10px;
-}
-@media (max-width: 768px) {
-  .popup-sponsor .popup-logo {
-    max-width: 140px;
-  }
-}
+
+/* Pop-up içi container */
 .popup-sponsor .container.popup-content {
   position: relative;
   z-index: 1;
-  width: 350px; 
+  width: 350px;
   margin: 0 auto;
   padding: 20px;
   background: rgba(0,0,0,0.3);
@@ -889,38 +876,37 @@ body {
 }
 @media (max-width: 768px) {
   .popup-sponsor .container.popup-content {
-    width: 80%; 
+    width: 80%;
     padding: 10px;
   }
 }
 
 
 /* ---------------------------------------------- */
-/* 6) FOOTER */
+/* 5) FOOTER */
 /* ---------------------------------------------- */
-
 .footer-section {
-    text-align: center;
-    padding: 20px;
-    color: #ccc;
+  text-align: center;
+  padding: 20px;
+  color: #ccc;
 }
 .footer-content img {
-    width: 100px;
-    height: auto;
-    margin: 0 auto;
-    display: block;
+  width: 100px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
 }
 .footer-content p {
-    font-size: 0.9rem;
-    margin-bottom: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
 }
 .social-links a {
-    color: #ffbc00;
-    text-decoration: none;
-    font-size: 1rem;
-    margin: 0 10px;
-    transition: color 0.3s ease-in-out;
+  color: #ffbc00;
+  text-decoration: none;
+  font-size: 1rem;
+  margin: 0 10px;
+  transition: color 0.3s ease-in-out;
 }
 .social-links a:hover {
-    color: #ffffff;
+  color: #ffffff;
 }
