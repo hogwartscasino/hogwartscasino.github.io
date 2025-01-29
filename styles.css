@@ -116,6 +116,7 @@ body {
   display: block;
 }
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px;
@@ -123,7 +124,13 @@ body {
   border-radius: 12px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+  }
+}
 .container-banner {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 7px;
@@ -213,6 +220,7 @@ body {
   }
 }
 .video-banner-section {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 10px 1px;
