@@ -26,7 +26,6 @@ body {
   z-index: 10000;
 }
 
-
 /* Video arkaplanı tam ekrana yaymak için */
 .video-bg {
     position: fixed;
@@ -92,9 +91,6 @@ body {
 /* Logo içindeki görsel */
 .header-logo {
     max-width: 150px;
-    /* Eskiden margin: 10px auto; idi.
-       Artık flex ile yerleştirdiğimiz için
-       ortalama vs. gerekmezse kaldırabilirsiniz. */
     margin: 10px;
     display: block;
 }
@@ -107,15 +103,13 @@ body {
     background-color: rgba(20, 20, 20, 0.70);
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-	
 }
-
 
 /* Dış katman (.container-banner) - Arka planı ve radius korunuyor */
 .container-banner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 7px; /* Dış kutunun etrafındaki boşluk (istersen değiştirebilirsin) */
+  padding: 7px; /* Dış kutunun etrafındaki boşluk */
   background-color: rgba(20, 20, 20, 0.70);
   border-radius: 12px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
@@ -147,11 +141,10 @@ body {
 }
 
 
-
-
 /* ---------------------------------------------- */
 /* YENİ: LOGO + SKYPE BAR */
 /* ---------------------------------------------- */
+
 .logo-bar {
   max-width: 1200px;
   margin: 0 auto;
@@ -163,9 +156,9 @@ body {
 
 /* Skype Butonunun ana stili */
 .skype-btn {
-  display: inline-flex;        /* İkon + metin yan yana */
-  align-items: center;         /* Dikeyde ortalama */
-  gap: 6px;                    /* İkon ile metin arası boşluk */
+  display: inline-flex;        
+  align-items: center;         
+  gap: 6px;                    
   background: #ffbc00;
   color: #fff;
   padding: 8px 15px;
@@ -174,9 +167,7 @@ body {
   font-size: 0.9rem;
   text-decoration: none;
   transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
-}s
-
-/* Hover efekti */
+}
 .skype-btn:hover {
   background: #ffffff;
   color: #0d0d217;
@@ -185,10 +176,10 @@ body {
 
 /* İkon boyutu */
 .skype-icon {
-  width: 20px;   /* İstediğiniz piksel değeri örn: 20px, 24px vb. */
+  width: 20px;
   height: 20px;  
-  object-fit: cover; /* Resmi kırpmadan sığdırır. "contain" da kullanabilirsiniz. */
-  display: block;    /* Gereksiz boşlukları engellemek için block yapabilirsiniz. */
+  object-fit: cover;
+  display: block;
 }
 
 
@@ -247,19 +238,16 @@ body {
   display: flex;
   /* 6 slayt, her biri 10sn görünür + 2sn fade-out = 12sn. 12sn x 6 = 72s */
   animation: autoplay-slide 72s infinite;
-  animation-timing-function: ease-in-out; /* opsiyonel */
+  animation-timing-function: ease-in-out;
 }
 
-/* =============== */
-/* KEYFRAMES SLIDER */
-/* =============== */
 @keyframes autoplay-slide {
   /* SLIDE 1: 0–13.8889% (10sn), 13.8889–16.6667% (2sn) fade-out */
-  0%, 13.8889% {        /* 0%  ->  10sn */
+  0%, 13.8889% {
     transform: translateX(0);
     opacity: 1;
   }
-  13.8889%, 16.6667% {  /* 10sn -> 12sn */
+  13.8889%, 16.6667% {
     transform: translateX(0);
     opacity: 0;
   }
@@ -319,7 +307,6 @@ body {
   min-width: 100%;
   position: relative;
 }
-
 .slide img {
   width: 100%;
   height: auto;
@@ -329,9 +316,7 @@ body {
   transform: scale(1.05);
 }
 
-/* ========================= */
-/*    Geçiş GIF Overlay      */
-/* ========================= */
+/* Geçiş GIF Overlay */
 .transition-overlay {
   position: absolute;
   top: 0;
@@ -339,27 +324,21 @@ body {
   width: 100%;
   height: 100%;
   background: url("img/banner/gecis.gif") center center no-repeat;
-  background-size: cover;    /* GIF boyutu ekrana uyum sağlar */
-  pointer-events: none;      /* Tıklamaları arkaya geçirsin */
-  opacity: 0;                /* Başlangıçta görünmez */
-  animation: overlay-animation 72s infinite; /* Slider ile aynı süre (72s) */
-  animation-timing-function: ease-in-out;    /* opsiyonel */
+  background-size: cover;
+  pointer-events: none;
+  opacity: 0;
+  animation: overlay-animation 72s infinite;
+  animation-timing-function: ease-in-out;
 }
 
-/* 
-   Keyframes: Slider'ın fade-out aralıklarıyla senkronize olacak şekilde
-   (Her slaytın ~10-12sn aralığında) overlay görünecek.
-   => Yüzdelik değerler autoplay-slide ile aynı:
-   13.8889–16.6667, 30.5556–33.3333, 47.2222–50, 63.8889–66.6667,
-   80.5556–83.3333, 97.2222–100
-*/
 @keyframes overlay-animation {
+  /* Her slaytın fade-out olduğu aralıkla senkron */
   /* Slide 1 fade-out */
   0%, 13.8889% {
     opacity: 0;
   }
   13.8889%, 16.6667% {
-    opacity: 0.5; /* Geçiş anında (fade-out) belirsin */
+    opacity: 0.5;
   }
 
   /* Slide 2 fade-out */
@@ -403,11 +382,12 @@ body {
   }
 }
 
+
 /* ---------------------------------------------- */
 /* 3) KUTULAR (list-item, small-box) conic gradient */
 /* ---------------------------------------------- */
 
-/* CSS @property (conic animasyonu) */
+/* ========== Conic Gradient Tanımı ========== */
 @property --gradient-angle {
   syntax: "<angle>";
   initial-value: 0turn;
@@ -418,6 +398,7 @@ body {
     --gradient-angle: 1turn;
   }
 }
+
 .list-item,
 .small-box {
     animation: 2s gradient-angle infinite linear;
@@ -488,6 +469,7 @@ body {
     color: #ccc;
     margin: 1.5px 0;
 }
+
 
 /* ---------------------------------------------- */
 /* 4) BUTON, GRID VS. */
@@ -566,228 +548,84 @@ body {
 }
 
 
-/****************************************************/
-/* 1) GENEL KUTU STİLİ                              */
-/****************************************************/
+/* ---------------------------------------------- */
+/* 5) FİXED KUTULAR (.floating-box)               */
+/* ---------------------------------------------- */
 
-.floating-box {
-  position: fixed;       /* Ekranla birlikte sabit dursun */
-  top: 50%;             /* Dikeyde ortalıyoruz */
-  transform: translateY(-50%);
-  width: 200px;         /* Kutunun genişliği (isteğe göre değiştirin) */
-  padding: 15px;        /* İç boşluk */
-  z-index: 9999;        /* İçeriklerin üstünde gösterilsin */
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+/* Conic gradient dönüşümü (Tekrar) - zaten yukarıda tanımlandı:
+   @property --gradient-angle  & @keyframes gradient-angle */
 
-  /* Arka plan rengi veya gradient eklemek isterseniz (örnek) */
-  border-radius: 12px;
-  border: 2px solid transparent;
-  background-image:
-    linear-gradient(#584827, #2d230f),
-    conic-gradient(
-      from var(--gradient-angle),
-      #584827 0%,
-      #c7a03c 37%,
-      #f9de90 40%,
-      #c7a03c 43%,
-      #584827 50%,
-      #584827 60%,
-      #c7a03c 77%,
-      #f9de90 80%,
-      #c7a03c 83%,
-      #584827 90%
-    );
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
-  animation: 2s gradient-angle infinite linear; /* conic gradient animasyonu */
-}
-
-/* Mobilde (768px altı) kutunun genişliği biraz daraltılabilir */
-@media (max-width: 768px) {
-  .floating-box {
-    width: 150px;
-    padding: 10px;
-  }
-}
-
-/* Değişken tanımı (conic gradient dönsün) */
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0turn;
-  inherits: false;
-}
-@keyframes gradient-angle {
-  to {
-    --gradient-angle: 1turn;
-  }
-}
-
-
-
-
-/* 
-  Conic gradient dönüşümü için gerekli tanımlar (isteğe bağlı) 
-  - İsterseniz silebilirsiniz veya farklı arkaplan verebilirsiniz 
-*/
-@property --gradient-angle {
-  syntax: "<angle>";
-  initial-value: 0turn;
-  inherits: false;
-}
-@keyframes gradient-angle {
-  to {
-    --gradient-angle: 1turn;
-  }
-}
-
-/* ===================== */
-/* 1) GENEL KUTU STİLİ   */
-/* ===================== */
-.floating-box {
-  position: fixed;         /* Ekrana sabit */
-  top: 50%;                /* Dikeyde ortala */
-  transform: translateY(-50%);
-  z-index: 9999;           /* Üstte göster */
-
-  /* Kutunun boyutu - isteğe göre düzenleyin */
-  width: 220px;
-  padding: 15px;
-  border-radius: 12px;
-  border: 2px solid transparent;
-
-  /* Conic gradient arkaplan animasyonu (opsiyonel) */
-  background-image:
-    linear-gradient(#584827, #2d230f),
-    conic-gradient(
-      from var(--gradient-angle),
-      #584827 0%,
-      #c7a03c 37%,
-      #f9de90 40%,
-      #c7a03c 43%,
-      #584827 50%,
-      #584827 60%,
-      #c7a03c 77%,
-      #f9de90 80%,
-      #c7a03c 83%,
-      #584827 90%
-    );
-  background-clip: padding-box, border-box;
-  background-origin: padding-box, border-box;
-  animation: 2s gradient-angle infinite linear;
-}
-
-/* =========================== */
-/* 2) SOL VE SAĞ KONUM (PC)    */
-/* =========================== */
-/*
-   .container maksimum 1200px ortalı kabul ediliyor.
-   Sol kutu: (100vw - 1200)/2 - 350px
-   Sağ kutu: (100vw - 1200)/2 - 350px  (right vs.)
-   Değerleri istediğiniz gibi büyütüp/küçültebilirsiniz.
-*/
-.floating-box-left {
-  left: calc((100vw - 1200px) / 2 - 350px);
-}
-.floating-box-right {
-  right: calc((100vw - 1200px) / 2 - 350px);
-}
-
-/* ============================================ */
-/* 3) TABLET & MOBİLDE KUTULARI GİZLE (<=1200px)*/
-/* ============================================ */
-@media (max-width: 1200px) {
-  .floating-box {
-    display: none !important; /* Bu sayede hiçbir kutu görünmez. */
-  }
-}
-
-/* =========================== */
-/* 2) SOL VE SAĞ KONUM (PC)    */
-/* =========================== */
-.floating-box-left {
-  left: calc((100vw - 1200px) / 2 - 350px);
-}
-.floating-box-right {
-  right: calc((100vw - 1200px) / 2 - 350px);
-}
-
-/* =========================== */
-/* 3) TABLET & MOBİLDE GİZLE   */
-/* =========================== */
-@media (max-width: 1200px) {
-  .floating-box {
-    display: none !important;
-  }
-}
-
-/* =========================== */
-/* 4) KUTU SABİT BOYUT        */
-/* =========================== */
+/* Temel kutu stili */
 .floating-box {
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
   z-index: 9999;
-
-  /* Kutu boyutunu sabitliyoruz (örnek: 350×600). 
-     İsterseniz değiştirin, ama sabitlik korunsun. */
   width: 200px;
   height: 600px;
-
-  /* İçerik kutu dışına taşmasın: 
-     Fazla büyükse scrollbar kullanılsın. */
-  overflow: hidden;     /* Eğer scrollbar istemiyorsanız.  */
-  /* overflow-y: auto;  // Dikey scrollbar isterseniz bunu kullanın */
-
+  overflow: hidden;     /* scrollbar kapatmak isterseniz hidden, yoksa auto */
   border-radius: 12px;
   border: 2px solid transparent;
-  background-color: rgba(0, 0, 0, 0.7); /* Örnek arkaplan */
+  background-color: rgba(0, 0, 0, 0.7); /* Örnek saydam arka plan */
+
+  /* Conic gradient animasyonu (opsiyonel) */
+  animation: 2s gradient-angle infinite linear;
+  background-image:
+    linear-gradient(#584827, #2d230f),
+    conic-gradient(
+      from var(--gradient-angle),
+      #584827 0%,
+      #c7a03c 37%,
+      #f9de90 40%,
+      #c7a03c 43%,
+      #584827 50%,
+      #584827 60%,
+      #c7a03c 77%,
+      #f9de90 80%,
+      #c7a03c 83%,
+      #584827 90%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
 }
 
-/* İçindeki elemanları dikey+yatay ortalamak isterseniz flex kullanabilirsiniz. */
+/* Sol ve sağ konum */
+.floating-box-left {
+  left: calc((100vw - 1200px) / 2 - 350px);
+}
+.floating-box-right {
+  right: calc((100vw - 1200px) / 2 - 350px);
+}
+
+/* İçerik kapsayıcı */
 .floating-box-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: start; 
-  /* 
-    "center" derseniz tüm içerik 
-    kutunun tam ortasında durur.
-    "start" derseniz yukarıdan başlar.
-  */
+  justify-content: start;
   text-align: center;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: 15px;  /* Kutu iç boşluk */
+  padding: 15px; 
 }
-
-/* RESİM: Asla kutuyu taşmasın */
 .floating-box-img {
   width: 100%;
   height: auto;
-  max-height: 200px; /* Resim yüksekliğini sınırlamak isterseniz */
+  max-height: 200px;
   object-fit: contain;
-  /* İstiyorsanız margin-bottom ekleyebilirsiniz 
-     ama sabit boyutta çok büyük bir margin, 
-     metni kutu dışına itebilir. 
-     Örnek: margin-bottom: 20px;
-  */
 }
-
 .floating-box-content h3 {
   font-size: 1.2rem;
   color: #ffbc00;
   margin: 8px 0;
 }
-
 .floating-box-content p {
   font-size: 0.85rem;
   color: #ccc;
   margin: 3px 0;
   line-height: 1.2;
 }
-
 .floating-box-btn {
   display: inline-flex;
   align-items: center;
@@ -808,49 +646,19 @@ body {
   transform: scale(1.05);
 }
 
-/* Metinleri merkeze hizala */
-.floating-box-content h3,
-.floating-box-content p {
-  text-align: center !important;
-}
-
-
-
-
-/* Telegram butonu: container sağ kenarıyla hizalı */
-.telegram-float {
-  position: fixed;
-  bottom: 30px;
-  z-index: 9999;
-  
-  /* 1200px’den geniş ekranlarda:
-     Ekran boyutu (100vw) - 1200px
-     geriye kalan alan iki yana bölünür => /2
-     Oraya + "biraz" padding eklemek isterseniz +20px diyebilirsiniz. */
-  right: calc((100vw - 1200px) / 2);
-
-  /* Ekran 1200px’ten dar olduğunda container zaten tam genişlikte, 
-     butonu ekranın sağından azıcık içeride gösterelim. */
-}
+/* Mobilde (<= 1200px) gizlemek (taşma sorununu engellemek için) */
 @media (max-width: 1200px) {
-  .telegram-float {
-    right: 10px; /* Mobilde yanlardan boşluk olsun */
+  .floating-box {
+    display: none !important;
   }
 }
 
 
-/* Container max 1200px ortalanıyor */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  /* ... diğer container CSS'leriniz ... */
-}
+/* ---------------------------------------------- */
+/* TELEGRAM BUTONU */
+/* ---------------------------------------------- */
 
-/* TELEGRAM BUTONUNUN HİZALANMASI 
-   => .container sağ kenarına sabitlenir 
-   => Geniş ekranda: calc((100vw - 1200px)/2)
-   => Dar ekranda: 10px içerden
-*/
+/* Container max 1200px ortalanıyor, buton sağ kenara sabitlenecek */
 .telegram-float {
   position: fixed;
   bottom: 30px;
@@ -863,7 +671,7 @@ body {
   }
 }
 
-/* Buton görünümü (daha öncekiyle aynı) */
+/* Buton görünümü */
 .telegram-float .btn {
   display: inline-block;
   width: 60px;
@@ -917,11 +725,11 @@ body {
   }
 }
 
-/* TELEGRAM TOOLTIP (baloncuk) */
+/* Tooltip (baloncuk) */
 .telegram-tooltip {
   position: absolute;
   top: 50%;
-  right: 90%; /* butonun sol tarafında görünecek */
+  right: 90%;
   transform: translateY(-50%);
   background: #3498db;
   color: #ffffff;
@@ -931,10 +739,8 @@ body {
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.4s ease, visibility 20s ease;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
-
-/* Tooltip içine küçük bir ok (sağa bakan) */
 .telegram-tooltip::after {
   content: "";
   position: absolute;
@@ -945,42 +751,38 @@ body {
   border-style: solid;
   border-color: transparent transparent transparent #3498db;
 }
-
-/* Görünür hale geldiğinde */
 .telegram-tooltip.visible {
   opacity: 1;
   visibility: visible;
 }
 
-/* AÇILIŞTA GÖRÜNEN POPUP (GELCASINO TANITIM) */
+
+/* ---------------------------------------------- */
+/* AÇILIŞTA GÖRÜNEN POPUP (SPONSOR) */
+/* ---------------------------------------------- */
+
 .popup-sponsor {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 99999;
-
-  /* Arka planı tamamen devre dışı bırakıyoruz (gradient yok) */
   background: none;
-  border: 2px solid #ffffff;   /* İsterseniz çerçeve bırakabilirsiniz */
-  border-radius: 12px;         /* Köşeleri yuvarla */
-
-  /* Varsayılan (PC/orta-büyük ekran) boyut */
+  border: 2px solid #ffffff;
+  border-radius: 12px;
   width: 400px;
   padding: 50px;
   text-align: center;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-
   color: #fff;
-  display: none; /* Başta gizli */
+  display: none; /* Başlangıçta gizli */
 }
 
-/* Ekran daraldığında (<= 768px) mobil görünüm */
 @media (max-width: 768px) {
   .popup-sponsor {
-    width: 85%;         /* Ekran genişliğinin %85’i */
-    max-width: 300px;   /* Tercihen en fazla 300px */
-    padding: 15px;      /* Biraz daha az padding */
+    width: 85%;
+    max-width: 300px;
+    padding: 15px;
   }
 }
 
@@ -989,26 +791,22 @@ body {
   display: block;
 }
 
-/* 
-  Asıl arka plan (GIF) pseudo-element ile ekleniyor.
-  Bu sayede .popup-sponsor içindeki metin/butonlar
-  opacity’den etkilenmez.
-*/
+/* Arka plan (GIF) pseudo-element ile */
 .popup-sponsor::before {
   content: "";
   position: absolute;
-  inset: 0;  /* top:0; left:0; bottom:0; right:0; */
+  inset: 0;
   background: url("img/popup/1.gif") center center / cover no-repeat;
-  opacity: 1;              /* <-- SOLDURMA AYARI (0.0 - 1.0) */
-  border-radius: 12px;       /* Ana div ile aynı köşe yumuşatma */
-  z-index: -1;               /* Arkada kalması için */
+  opacity: 1;              
+  border-radius: 12px;
+  z-index: -1; 
 }
 
-/* X (Kapat) butonu */
+/* X Kapat butonu */
 .close-btn {
   position: absolute;
-  top: -15px;    /* Kutu üst kenarından 15px yukarı */
-  right: -15px;  /* Kutu sağ kenarından 15px sağ */
+  top: -15px;
+  right: -15px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -1027,124 +825,68 @@ body {
   color: #000; 
 }
 
-.close-btn:hover {
-  background: #ffbc00;  /* Hover’da sarı */
-  color: #000;         /* X koyu veya siyah */
-}
-
-
-/* İçerik logonun boyutu vs. */
 .popup-sponsor .popup-logo {
   max-width: 150px;
   height: auto;
   margin-bottom: 10px;
 }
-
-
-
-/* Mobilde logoyu da biraz küçültmek isterseniz ekleyebilirsiniz */
 @media (max-width: 768px) {
   .popup-sponsor .popup-logo {
     max-width: 120px;
   }
 }
-
-/* Başlık */
 .popup-sponsor h3 {
   font-size: 1.5rem;
   color: #ffbc00;
   margin-bottom: 10px;
 }
-
-/* Mobil başlık boyutu */
 @media (max-width: 768px) {
   .popup-sponsor h3 {
     font-size: 1.3rem;
   }
 }
-
-/* Metin */
 .popup-sponsor p {
   color: #ccc;
   line-height: 1.4em;
 }
 
-
-/* Mobilde logoyu da biraz küçültmek isterseniz ekleyebilirsiniz */
-@media (max-width: 768px) {
-  .popup-sponsor .popup-logo {
-    max-width: 120px;
-  }
-}
-
-/* Pop-up içi başlık */
-.popup-sponsor h3 {
-  font-size: 1.8rem;    /* Başlık boyutu */
-  font-weight: 700;     /* Yazı kalınlığı (700 = bold) */
-  color: #ffbc00;       /* Renk */
-  margin-bottom: 10px;  
-}
-
-/* Mobilde başlık biraz küçülebilir */
+/* Ek Tasarım */
 @media (max-width: 768px) {
   .popup-sponsor h3 {
     font-size: 1.3rem;
   }
 }
-
-/* Pop-up içi metin */
 .popup-sponsor p {
   font-size: 1.5rem;
   font-weight: 400;
-
-  /* Stroke (Chrome, Safari, Edge) */
-  -webkit-text-fill-color: #ffffff;    /* İç renk */
-  -webkit-text-stroke: 0.1px #ffffff; /* Dış renk, kalınlık 0.1px */
-
-  /* Normal renk (Firefox, vs.) */
+  -webkit-text-fill-color: #ffffff;
+  -webkit-text-stroke: 0.1px #ffffff;
   color: #ffffff;
-
-  /* Parlaklık (glow) eklemek için text-shadow */
   text-shadow: 
-    0 0 5px rgba(200, 200, 200, 0.7),  /* yakın parlama */
-    0 0 10px rgba(200, 200, 200, 0.7); /* biraz daha uzak parlama */
-
+    0 0 5px rgba(200, 200, 200, 0.7),
+    0 0 10px rgba(200, 200, 200, 0.7);
   line-height: 1.8em;
   margin-bottom: 15px;
 }
-
-
-/* Masaüstü (varsayılan) */
 .popup-sponsor .popup-logo {
-  max-width: 200px;   /* İstediğiniz boyut */
-  height: auto;       /* Oranı koruyarak yükseklik ayarla */
+  max-width: 200px;
   margin-bottom: 10px;
 }
-
-/* Mobilde biraz küçültmek için */
 @media (max-width: 768px) {
   .popup-sponsor .popup-logo {
-    max-width: 140px; /* Mobilde biraz daha küçük */
+    max-width: 140px;
   }
 }
-
-
-/* .popup-sponsor .container.popup-content */
 .popup-sponsor .container.popup-content {
-  position: relative;   /* Arka plan .popup-sponsor::before geride kalacak */
+  position: relative;
   z-index: 1;
-
-  /* Boyut ayarları */
-  width: 350;         /* Örnek sabit genişlik */
-  /* max-width: 400px;   Alternatif şekilde max-width verebilirsiniz */
-  margin: 0 auto;       /* Ortala */
-  padding: 20px;        /* İç boşluk */
-  background: rgba(0,0,0,0.3); /* İsteğe bağlı saydam arka plan */
+  width: 350px; 
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(0,0,0,0.3);
   border-radius: 5px;
   text-align: center;
 }
-
-/* Mobilde ayar */
 @media (max-width: 768px) {
   .popup-sponsor .container.popup-content {
     width: 80%; 
@@ -1153,10 +895,8 @@ body {
 }
 
 
-
-
 /* ---------------------------------------------- */
-/* 5) FOOTER */
+/* 6) FOOTER */
 /* ---------------------------------------------- */
 
 .footer-section {
