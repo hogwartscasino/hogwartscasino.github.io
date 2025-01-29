@@ -99,7 +99,6 @@ body {
     display: block;
 }
 
-/* Ana container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -107,7 +106,15 @@ body {
     background-color: rgba(20, 20, 20, 0.70);
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-	
+}
+
+/* Mobil uyum (768px altı) */
+@media (max-width: 768px) {
+  .container {
+    /* Örneğin mobilde padding’i ve radius’u biraz küçültün */
+    padding: 15px;
+    border-radius: 8px;
+  }
 }
 
 
