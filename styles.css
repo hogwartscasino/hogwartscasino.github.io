@@ -558,7 +558,7 @@ body {
   .list-item {
     /* Mobilde istediğiniz oranda sola boşluk verin */
     width: 85%;        /* Örneğin %85 genişlik */
-    margin-left: -5px; /* Sol kenardan 20px boşluk (örn) */
+    margin-left: -7px; /* Sol kenardan 20px boşluk (örn) */
     margin-right: 0;   /* Sağdan ekstra boşluk yok */
     height: auto;
   }
