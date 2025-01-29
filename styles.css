@@ -99,6 +99,7 @@ body {
     display: block;
 }
 
+/* Ana container */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -106,22 +107,15 @@ body {
     background-color: rgba(20, 20, 20, 0.70);
     border-radius: 12px;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Mobil uyum (768px altı) */
-@media (max-width: 768px) {
-  .container {
-    /* Örneğin mobilde padding’i ve radius’u biraz küçültün */
-    padding: 15px;
-    border-radius: 8px;
-  }
+	
 }
 
 
-.container {
+/* Dış katman (.container-banner) - Arka planı ve radius korunuyor */
+.container-banner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 30px;
+  padding: 7px; /* Dış kutunun etrafındaki boşluk (istersen değiştirebilirsin) */
   background-color: rgba(20, 20, 20, 0.70);
   border-radius: 12px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
@@ -129,20 +123,19 @@ body {
 
 /* Mobil uyum (768px altı) */
 @media (max-width: 768px) {
-  .container {
-    /* Padding ve radius’u biraz düşürebilirsiniz */
-    padding: 15px;
-    border-radius: 8px;
-
-    /* Hem metni hem büyük kutuları ortalamak için: */
-    text-align: center;         /* Metinleri ortalar */
-    display: flex;             /* Blokları ortalamak için flex kullan */
-    flex-direction: column;    /* İçerikleri dikey sıralar */
-    align-items: center;       /* Yatayda ortalama (flexbox) */
-    justify-content: center;   /* Dikeyde fark yaratmaz, isterseniz space-between vs. */
+  .container-banner {
+    padding: 6px;
+    border-radius: 7px;
   }
 }
 
+/* İçerideki slider kapsayıcılarında, tüm margin/padding sıfırla */
+.container-banner .slider-container,
+.container-banner .slider,
+.container-banner .slide {
+  margin: 0;
+  padding: 0;
+}
 
 /* Resimleri blok düzende, kenarlara sıfırlayarak göster */
 .container-banner .slide img {
@@ -425,10 +418,168 @@ body {
     --gradient-angle: 1turn;
   }
 }
-
 .list-item,
 .small-box {
-  animation: 2s gradient-angle infinite linear;
+    animation: 2s gradient-angle infinite linear;
+    border: 2px solid transparent;
+    background-image:
+      linear-gradient(#584827, #2d230f),
+      conic-gradient(
+        from var(--gradient-angle),
+        #584827 0%,
+        #c7a03c 37%,
+        #f9de90 40%,
+        #c7a03c 43%,
+        #584827 50%,
+        #584827 60%,
+        #c7a03c 77%,
+        #f9de90 80%,
+        #c7a03c 83%,
+        #584827 90%
+      );
+    background-clip: padding-box, border-box;
+    background-origin: padding-box, border-box;
+}
+
+.list-item {
+    border-radius: 12px;
+    width: 200px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+}
+.list-item:hover {
+    transform: scale(1.05);
+}
+
+.small-box {
+    border-radius: 12px;
+    width: 150px;
+    height: 110px;
+    padding: 10px;
+    text-align: center;
+    font-size: 0.9rem;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+}
+.small-box:hover {
+    transform: scale(1.05);
+}
+
+.list-item__logo img {
+    max-width: 150px;
+    max-height: 150px;
+    margin: 0 auto 10px;
+    object-fit: contain;
+    display: block;
+}
+.list-item__info h3 {
+    font-size: 1.5rem;
+    color: #ffbc00;
+    margin-bottom: 10px;
+}
+.list-item__info p {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin: 1.5px 0;
+}
+
+/* ---------------------------------------------- */
+/* 4) BUTON, GRID VS. */
+/* ---------------------------------------------- */
+
+.list-item__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffbc00;
+    color: #0d0d27;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.8rem;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+.list-item__btn:hover {
+    background: #ffffff;
+    color: #0d0d27;
+    transform: scale(1.05);
+}
+
+.additional-box-section {
+    padding: 20px 0;
+    text-align: center;
+}
+.additional-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.sponsor-section {
+    padding: 10px 0;
+    text-align: center;
+}
+.section-title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+.section-title span {
+    color: #ffbc00;
+}
+
+.grid-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.small-space {
+    line-height: 1;
+    margin-bottom: 2px;
+}
+
+/* Mobil uyum (768px altı) */
+@media (max-width: 768px) {
+  .grid-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    justify-items: start; /* Kutuları solda hizala */
+  }
+
+  .list-item {
+    /* Mobilde istediğiniz oranda sola boşluk verin */
+    width: 85%;        /* Örneğin %85 genişlik */
+    margin-left: -5px; /* Sol kenardan 20px boşluk (örn) */
+    margin-right: 0;   /* Sağdan ekstra boşluk yok */
+    height: auto;
+  }
+}
+
+
+/****************************************************/
+/* 1) GENEL KUTU STİLİ                              */
+/****************************************************/
+
+.floating-box {
+  position: fixed;       /* Ekranla birlikte sabit dursun */
+  top: 50%;             /* Dikeyde ortalıyoruz */
+  transform: translateY(-50%);
+  width: 200px;         /* Kutunun genişliği (isteğe göre değiştirin) */
+  padding: 15px;        /* İç boşluk */
+  z-index: 9999;        /* İçeriklerin üstünde gösterilsin */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+
+  /* Arka plan rengi veya gradient eklemek isterseniz (örnek) */
+  border-radius: 12px;
   border: 2px solid transparent;
   background-image:
     linear-gradient(#584827, #2d230f),
@@ -447,69 +598,196 @@ body {
     );
   background-clip: padding-box, border-box;
   background-origin: padding-box, border-box;
+  animation: 2s gradient-angle infinite linear; /* conic gradient animasyonu */
 }
+
+/* Mobilde (768px altı) kutunun genişliği biraz daraltılabilir */
+@media (max-width: 768px) {
+  .floating-box {
+    width: 150px;
+    padding: 10px;
+  }
+}
+
+/* Değişken tanımı (conic gradient dönsün) */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0turn;
+  inherits: false;
+}
+@keyframes gradient-angle {
+  to {
+    --gradient-angle: 1turn;
+  }
+}
+
+
+
 
 /* 
-  1) Masaüstü genişliğinde: 
-     width: 200px, ama max-width:100% ile 
-     container’dan taşamaması garanti. 
+  Conic gradient dönüşümü için gerekli tanımlar (isteğe bağlı) 
+  - İsterseniz silebilirsiniz veya farklı arkaplan verebilirsiniz 
 */
-.list-item {
-  width: 200px;
-  max-width: 100%;     /* Kutunun .container dışına taşmasını engeller. */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0turn;
+  inherits: false;
+}
+@keyframes gradient-angle {
+  to {
+    --gradient-angle: 1turn;
+  }
+}
+
+/* ===================== */
+/* 1) GENEL KUTU STİLİ   */
+/* ===================== */
+.floating-box {
+  position: fixed;         /* Ekrana sabit */
+  top: 50%;                /* Dikeyde ortala */
+  transform: translateY(-50%);
+  z-index: 9999;           /* Üstte göster */
+
+  /* Kutunun boyutu - isteğe göre düzenleyin */
+  width: 220px;
+  padding: 15px;
   border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  border: 2px solid transparent;
+
+  /* Conic gradient arkaplan animasyonu (opsiyonel) */
+  background-image:
+    linear-gradient(#584827, #2d230f),
+    conic-gradient(
+      from var(--gradient-angle),
+      #584827 0%,
+      #c7a03c 37%,
+      #f9de90 40%,
+      #c7a03c 43%,
+      #584827 50%,
+      #584827 60%,
+      #c7a03c 77%,
+      #f9de90 80%,
+      #c7a03c 83%,
+      #584827 90%
+    );
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  animation: 2s gradient-angle infinite linear;
+}
+
+/* =========================== */
+/* 2) SOL VE SAĞ KONUM (PC)    */
+/* =========================== */
+/*
+   .container maksimum 1200px ortalı kabul ediliyor.
+   Sol kutu: (100vw - 1200)/2 - 350px
+   Sağ kutu: (100vw - 1200)/2 - 350px  (right vs.)
+   Değerleri istediğiniz gibi büyütüp/küçültebilirsiniz.
+*/
+.floating-box-left {
+  left: calc((100vw - 1200px) / 2 - 350px);
+}
+.floating-box-right {
+  right: calc((100vw - 1200px) / 2 - 350px);
+}
+
+/* ============================================ */
+/* 3) TABLET & MOBİLDE KUTULARI GİZLE (<=1200px)*/
+/* ============================================ */
+@media (max-width: 1200px) {
+  .floating-box {
+    display: none !important; /* Bu sayede hiçbir kutu görünmez. */
+  }
+}
+
+/* =========================== */
+/* 2) SOL VE SAĞ KONUM (PC)    */
+/* =========================== */
+.floating-box-left {
+  left: calc((100vw - 1200px) / 2 - 350px);
+}
+.floating-box-right {
+  right: calc((100vw - 1200px) / 2 - 350px);
+}
+
+/* =========================== */
+/* 3) TABLET & MOBİLDE GİZLE   */
+/* =========================== */
+@media (max-width: 1200px) {
+  .floating-box {
+    display: none !important;
+  }
+}
+
+/* =========================== */
+/* 4) KUTU SABİT BOYUT        */
+/* =========================== */
+.floating-box {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 9999;
+
+  /* Kutu boyutunu sabitliyoruz (örnek: 350×600). 
+     İsterseniz değiştirin, ama sabitlik korunsun. */
+  width: 200px;
+  height: 600px;
+
+  /* İçerik kutu dışına taşmasın: 
+     Fazla büyükse scrollbar kullanılsın. */
+  overflow: hidden;     /* Eğer scrollbar istemiyorsanız.  */
+  /* overflow-y: auto;  // Dikey scrollbar isterseniz bunu kullanın */
+
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background-color: rgba(0, 0, 0, 0.7); /* Örnek arkaplan */
+}
+
+/* İçindeki elemanları dikey+yatay ortalamak isterseniz flex kullanabilirsiniz. */
+.floating-box-content {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 300px;
-}
-.list-item:hover {
-  transform: scale(1.05);
-}
-
-/* Küçük kutu */
-.small-box {
-  width: 150px;
-  max-width: 100%;     /* İsterseniz buna da ekleyebilirsiniz. */
-  border-radius: 12px;
-  height: 110px;
-  padding: 10px;
+  align-items: center;
+  justify-content: start; 
+  /* 
+    "center" derseniz tüm içerik 
+    kutunun tam ortasında durur.
+    "start" derseniz yukarıdan başlar.
+  */
   text-align: center;
-  font-size: 0.9rem;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
-}
-.small-box:hover {
-  transform: scale(1.05);
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 15px;  /* Kutu iç boşluk */
 }
 
-.list-item__logo img {
-  max-width: 150px;
-  max-height: 150px;
-  margin: 0 auto 10px;
+/* RESİM: Asla kutuyu taşmasın */
+.floating-box-img {
+  width: 100%;
+  height: auto;
+  max-height: 200px; /* Resim yüksekliğini sınırlamak isterseniz */
   object-fit: contain;
-  display: block;
+  /* İstiyorsanız margin-bottom ekleyebilirsiniz 
+     ama sabit boyutta çok büyük bir margin, 
+     metni kutu dışına itebilir. 
+     Örnek: margin-bottom: 20px;
+  */
 }
-.list-item__info h3 {
-  font-size: 1.5rem;
+
+.floating-box-content h3 {
+  font-size: 1.2rem;
   color: #ffbc00;
-  margin-bottom: 10px;
+  margin: 8px 0;
 }
-.list-item__info p {
-  font-size: 0.9rem;
+
+.floating-box-content p {
+  font-size: 0.85rem;
   color: #ccc;
-  margin: 1.5px 0;
+  margin: 3px 0;
+  line-height: 1.2;
 }
 
-/* ---------------------------------------------- */
-/* 4) BUTON, GRID VS. */
-/* ---------------------------------------------- */
-
-.list-item__btn {
+.floating-box-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -520,83 +798,20 @@ body {
   font-weight: bold;
   font-size: 0.8rem;
   text-decoration: none;
+  margin-top: 8px;
   transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
-.list-item__btn:hover {
+.floating-box-btn:hover {
   background: #ffffff;
   color: #0d0d27;
   transform: scale(1.05);
 }
 
-/* Kutu kapsayıcılar (flex ya da grid) */
-.additional-box-section {
-  padding: 20px 0;
-  text-align: center;
+/* Metinleri merkeze hizala */
+.floating-box-content h3,
+.floating-box-content p {
+  text-align: center !important;
 }
-.additional-boxes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.sponsor-section {
-  padding: 10px 0;
-  text-align: center;
-}
-.section-title {
-  font-size: 2rem;
-  margin-bottom: 30px;
-}
-.section-title span {
-  color: #ffbc00;
-}
-
-/* Esas liste alanı */
-.grid-list {
-  display: flex;        /* Masaüstü: flex layout */
-  flex-wrap: wrap;      /* Taşmayı engeller, kutular alta geçer */
-  gap: 20px;
-  justify-content: center; /* Kutuları yatayda ortalar */
-}
-.small-space {
-  line-height: 1;
-  margin-bottom: 2px;
-}
-
-/* 768px ve altı: mobil ekranlar */
-@media (max-width: 768px) {
-  .grid-list {
-    display: grid;              /* Mobilde grid yapısına geç */
-    grid-template-columns: repeat(2, 1fr); /* 2 sütun */
-    gap: 15px;
-
-    /* 
-       Eğer kutuları solda istiyorsanız:
-         justify-items: start;
-
-       Eğer kutuları ortalamak isterseniz:
-         justify-items: center;
-    */
-    justify-items: center;
-  }
-
-  .list-item {
-    width: 85%;     /* Mobilde genişliği %85 */
-    height: auto;   /* Yüksekliği otomatik */
-    margin: 0 auto; /* Ortalamak isterseniz: 0 auto */
-  }
-
-  /* Ek: additional-boxes için de mobil düzen */
-  .additional-boxes {
-    display: flex;                 /* Varsa ek kutular */
-    justify-content: center;
-    align-items: stretch;
-    gap: 10px;
-  }
-}
-
-
 
 
 
@@ -623,14 +838,11 @@ body {
 }
 
 
+/* Container max 1200px ortalanıyor */
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 30px;
-    /* Kutu arkaplanı biraz saydam: */
-    background-color: rgba(20, 20, 20, 0.70);
-    border-radius: 12px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  max-width: 1200px;
+  margin: 0 auto;
+  /* ... diğer container CSS'leriniz ... */
 }
 
 /* TELEGRAM BUTONUNUN HİZALANMASI 
