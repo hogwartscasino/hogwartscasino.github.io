@@ -118,11 +118,10 @@ body {
 }
 
 
-/* Dış katman (.container-banner) - Arka planı ve radius korunuyor */
-.container-banner {
+.container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 7px; /* Dış kutunun etrafındaki boşluk (istersen değiştirebilirsin) */
+  padding: 30px;
   background-color: rgba(20, 20, 20, 0.70);
   border-radius: 12px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
@@ -130,19 +129,20 @@ body {
 
 /* Mobil uyum (768px altı) */
 @media (max-width: 768px) {
-  .container-banner {
-    padding: 6px;
-    border-radius: 7px;
+  .container {
+    /* Padding ve radius’u biraz düşürebilirsiniz */
+    padding: 15px;
+    border-radius: 8px;
+
+    /* Hem metni hem büyük kutuları ortalamak için: */
+    text-align: center;         /* Metinleri ortalar */
+    display: flex;             /* Blokları ortalamak için flex kullan */
+    flex-direction: column;    /* İçerikleri dikey sıralar */
+    align-items: center;       /* Yatayda ortalama (flexbox) */
+    justify-content: center;   /* Dikeyde fark yaratmaz, isterseniz space-between vs. */
   }
 }
 
-/* İçerideki slider kapsayıcılarında, tüm margin/padding sıfırla */
-.container-banner .slider-container,
-.container-banner .slider,
-.container-banner .slide {
-  margin: 0;
-  padding: 0;
-}
 
 /* Resimleri blok düzende, kenarlara sıfırlayarak göster */
 .container-banner .slide img {
