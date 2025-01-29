@@ -445,7 +445,6 @@ body {
 .list-item__btn {
   display: inline-flex;
   align-items: center;
-
   justify-content: center;
   background: #ffbc00;
   color: #0d0d27;
